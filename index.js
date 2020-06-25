@@ -6,6 +6,7 @@ import * as firebase from "firebase/app";
 // Add the Firebase products that you want to use
 import "firebase/auth";
 import "firebase/firestore";
+import "firebase/analytics";
 
 import * as firebaseui from "firebaseui";
 
@@ -23,6 +24,7 @@ const rsvpNo = document.getElementById("rsvp-no");
 var rsvpListener = null;
 var guestbookListener = null;
 
+
 // Add Firebase project configuration object here
 // Your web app's Firebase configuration
   var firebaseConfig = {
@@ -32,10 +34,12 @@ var guestbookListener = null;
     projectId: "appdev-meetup-lab",
     storageBucket: "appdev-meetup-lab.appspot.com",
     messagingSenderId: "726837527062",
-    appId: "1:726837527062:web:cce33f2e35f92881016b37"
+    appId: "1:726837527062:web:cce33f2e35f92881016b37",
+    measurementId: "G-KC51YMFQ95"
   };
 
  firebase.initializeApp(firebaseConfig);
+ firebase.analytics();
 
 // FirebaseUI config
 const uiConfig = {
