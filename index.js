@@ -18,6 +18,8 @@ const form = document.getElementById("leave-message");
 const input = document.getElementById("message");
 const guestbook = document.getElementById("guestbook");
 const numberAttending = document.getElementById("number-attending");
+const labTokenID = document.getElementById("lab-token-id");
+const labLink = document.getElementById("lab-link");
 const rsvpYes = document.getElementById("rsvp-yes");
 const rsvpNo = document.getElementById("rsvp-no");
 
@@ -166,7 +168,7 @@ firebase.firestore()
 .onSnapshot(snap => {
  const newAttendeeCount = snap.docs.length;
 
- numberAttending.innerHTML = newAttendeeCount+' people going'; 
+ numberAttending.innerHTML = newAttendeeCount+' people taking the lab'; 
 })
 
 // Listen for attendee list
@@ -177,11 +179,20 @@ function subscribeCurrentRSVP(user){
  .onSnapshot((doc) => {
    if (doc && doc.data()){
      const attendingResponse = doc.data().attending;
+     const token_id = doc.data().token_id;
+     const lab_link = 'https://www.qwiklabs.com/focuses/12682?parent=catalog'
 
      // Update css classes for buttons
      if (attendingResponse){
        rsvpYes.className="clicked";
        rsvpNo.className="";
+       
+       if (token_id)
+       {
+         labTokenID.innerHTML = 'Qwicklab access token key: ' + token_id;
+         //labLink.innerHTML = ' recommended lab is: ' + lab_link;
+         console.log(token_id)
+       }
      }
      else{
        rsvpYes.className="";
