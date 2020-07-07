@@ -149,7 +149,7 @@ rsvpYes.onclick = () => {
  // If they RSVP'd yes, save a document with attending: true
  userDoc.set({
    attending: true
- }).catch(console.error)
+ },{merge:true}).catch(console.error)
 }
 rsvpNo.onclick = () => {
  // Get a reference to the user's document in the attendees collection
