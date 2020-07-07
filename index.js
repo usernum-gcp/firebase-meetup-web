@@ -85,7 +85,7 @@ if (user){
   subscribeCurrentRSVP(user);
 }
 else{
-  startRsvpButton.textContent = "RSVP";
+  startRsvpButton.textContent = "LoGIN";
   // Hide guestbook for non-logged-in users
   guestbookContainer.style.display = "none";
 
@@ -158,7 +158,7 @@ rsvpNo.onclick = () => {
  // If they RSVP'd no, save a document with attending: false
  userDoc.set({
    attending: false
- }).catch(console.error)
+ }, {merge:true}).catch(console.error)
 }
 
 // Listen for attendee list
