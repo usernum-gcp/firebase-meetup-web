@@ -13,6 +13,7 @@ import * as firebaseui from "firebaseui";
 // Document elements
 const startRsvpButton = document.getElementById("startRsvp");
 const guestbookContainer = document.getElementById("guestbook-container");
+const labContainer= document.getElementById("lab-container");
 
 const form = document.getElementById("leave-message");
 const input = document.getElementById("message");
@@ -42,7 +43,7 @@ var guestbookListener = null;
 
  firebase.initializeApp(firebaseConfig);
  firebase.analytics();
-
+labContainer.style.display = "none";
 // FirebaseUI config
 const uiConfig = {
   credentialHelper: firebaseui.auth.CredentialHelper.NONE,
@@ -150,6 +151,7 @@ rsvpYes.onclick = () => {
  userDoc.set({
    attending: true
  },{merge:true}).catch(console.error)
+ labContainer.style.display = "block";
 }
 rsvpNo.onclick = () => {
  // Get a reference to the user's document in the attendees collection
@@ -159,6 +161,7 @@ rsvpNo.onclick = () => {
  userDoc.set({
    attending: false
  }, {merge:true}).catch(console.error)
+ labContainer.style.display = "none";
 }
 
 // Listen for attendee list
