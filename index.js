@@ -193,10 +193,20 @@ function subscribeCurrentRSVP(user){
          //labLink.innerHTML = ' recommended lab is: ' + lab_link;
          console.log(token_id)
        }
+       else
+       {
+         labTokenID.innerHTML = 'Token is not available, please contact meeting host';
+         //labLink.innerHTML = ' recommended lab is: ' + lab_link;
+         console.log('no token')
+       }
+       
      }
      else{
        rsvpYes.className="";
        rsvpNo.className="clicked";
+       {
+         labTokenID.innerHTML = '';   
+       }
      }
    }
  });
